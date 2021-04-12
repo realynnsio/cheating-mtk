@@ -1,8 +1,8 @@
-# Berapa koef yang ada (derajat polinom + 1)
+# Setting up a few stuff at the beginning
 derajat = int(input("Derajat polinom adalah: "))
 n = derajat + 1
 koefisien = []
-
+akar_rasional = []
 
 # To check if the number is an integer or a float
 def is_number_int(y):
@@ -25,6 +25,12 @@ for i in range(n):
         x = float(x)
 
     koefisien.append(x)
+
+# Precaution if koefisien[0] = 0
+if koefisien[0] == 0:
+    akar_rasional.append(0)
+    koefisien.pop(0)
+    n = n - 1
 
 # Nyari faktor a[0]
 limit_a0 = abs(koefisien[0]) + 1
@@ -56,7 +62,6 @@ for i in range(len(factors_akhir)):
         nilai_k.append(-abs(z))
 
 # Mencari akar rasional dari list nilai_k
-akar_rasional = []
 for i in range(len(nilai_k)):
     sum = 0
     for x in range(n):
@@ -70,7 +75,10 @@ for i in range(len(nilai_k)):
         pass
 
 akar_rasional = set(akar_rasional)
+
+# Printing the results
 print("Akar rasionalnya adalah...")
 print(*akar_rasional, sep=", ")
+
 
 # This is hot garbage but at least it works
